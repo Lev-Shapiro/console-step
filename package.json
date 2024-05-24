@@ -7,9 +7,13 @@
     "test": "jest",
     "build": "tsc"
   },
-  "keywords": [],
+  "keywords": ["console", "log", "step", "visual", "debug"],
   "author": "Lev Shapiro",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Lev-Shapiro/console_step.git"
+  },
+  "license": "MIT",
   "description": "Create visually appealing console.log messages with ease",
   "devDependencies": {
     "@types/jest": "^29.5.12",
