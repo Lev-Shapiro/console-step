@@ -39,15 +39,15 @@ npm install console_step
 ```javascript
 import { ConsoleStep, StepVariety } from "console_step";
 
-const fetchToServer = () => Promise.resolve();
+const fetchToServer = () => false;
 
-const pingStep = new ConsoleStep("Ping server");
-
-fetchToServer()
-  .then(() => pingStep.createStep("Pong!", StepVariety.Success))
-  .catch(() => pingStep.createStep("Server is down!", StepVariety.Error));
-
-pingStep.log();
+new ConsoleStep("Ping server").logAfter((step) => {
+  if(fetchToServer()) {
+    step.createStep("Pong!", StepVariety.Success);
+  } else {
+    step.createStep("Server is down!", StepVariety.Error);
+  };  
+})
 
 new ConsoleStep("AI Summary Request").logAfter((step) => {
   step.createStep("Model: GPT-3.5-turbo");
