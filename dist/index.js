@@ -9,20 +9,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ConsoleStep = void 0;
-const step_variety_enum_1 = require("./step-variety.enum");
-const styles = {
-    [step_variety_enum_1.StepVariety.Default]: '',
-    [step_variety_enum_1.StepVariety.Error]: '\x1b[91m', // redBright
-    [step_variety_enum_1.StepVariety.Success]: '\x1b[92m', // greenBright
-    [step_variety_enum_1.StepVariety.Info]: '\x1b[94m', // blueBright
-    [step_variety_enum_1.StepVariety.Warning]: '\x1b[93m', // yellowBright
-    [step_variety_enum_1.StepVariety.ObjectBrackets]: '\x1b[95m', // magentaBright
-    [step_variety_enum_1.StepVariety.ArrayBrackets]: '\x1b[96m' // cyanBright
-};
+exports.ConsoleStep = exports.StepVariety = void 0;
+var StepVariety;
+(function (StepVariety) {
+    StepVariety["Default"] = "";
+    StepVariety["Error"] = "\u001B[91m";
+    StepVariety["Success"] = "\u001B[92m";
+    StepVariety["Info"] = "\u001B[94m";
+    StepVariety["Warning"] = "\u001B[93m";
+    StepVariety["ObjectBrackets"] = "\u001B[95m";
+    StepVariety["ArrayBrackets"] = "\u001B[96m"; // cyanBright
+})(StepVariety || (exports.StepVariety = StepVariety = {}));
 const reset = '\x1b[0m';
 function applyStyle(text, style) {
-    return styles[style] + text + reset;
+    return style + text + reset;
 }
 class ConsoleStep {
     constructor(value, level = 0, isHead = true) {
@@ -31,14 +31,14 @@ class ConsoleStep {
         this.isHead = isHead;
         this.next = [];
     }
-    createStep(value, variety = step_variety_enum_1.StepVariety.Default, level = this.level) {
+    createStep(value, variety = StepVariety.Default, level = this.level) {
         const content = `${this.spacing}${value}`;
-        const contentColored = variety !== step_variety_enum_1.StepVariety.Default ? applyStyle(content, variety) : content;
+        const contentColored = variety !== StepVariety.Default ? applyStyle(content, variety) : content;
         const step = new ConsoleStep(contentColored, level + 1, false);
         this.next.push(step);
         return step;
     }
-    createStepParagraph(text, variety = step_variety_enum_1.StepVariety.Default) {
+    createStepParagraph(text, variety = StepVariety.Default) {
         const paragraph = this.breakLines(text);
         return this.createStep(paragraph, variety);
     }
@@ -46,9 +46,9 @@ class ConsoleStep {
         if (Array.isArray(obj)) {
             throw new Error(".createStepObject can't have arrays passed");
         }
-        pointer.value += applyStyle("{", step_variety_enum_1.StepVariety.ObjectBrackets);
+        pointer.value += applyStyle("{", StepVariety.ObjectBrackets);
         if (!Object.keys(obj).length) {
-            pointer.value += applyStyle("}", step_variety_enum_1.StepVariety.ObjectBrackets);
+            pointer.value += applyStyle("}", StepVariety.ObjectBrackets);
             return;
         }
         for (const [key, value] of Object.entries(obj)) {
@@ -58,15 +58,15 @@ class ConsoleStep {
             }
             pointer.createStep(`${key}: ${value}`);
         }
-        pointer.createStep("}", step_variety_enum_1.StepVariety.ObjectBrackets, pointer.level - 1);
+        pointer.createStep("}", StepVariety.ObjectBrackets, pointer.level - 1);
     }
     createStepArray(arr, pointer = this) {
         if (!Array.isArray(arr)) {
             throw new Error(".createStepArray only accepts arrays");
         }
-        pointer.value += applyStyle("[", step_variety_enum_1.StepVariety.ArrayBrackets);
+        pointer.value += applyStyle("[", StepVariety.ArrayBrackets);
         if (!arr.length) {
-            pointer.value += applyStyle("]", step_variety_enum_1.StepVariety.ArrayBrackets);
+            pointer.value += applyStyle("]", StepVariety.ArrayBrackets);
             return;
         }
         for (const value of arr) {
@@ -79,7 +79,7 @@ class ConsoleStep {
             }
             pointer.createStep(value);
         }
-        pointer.createStep("]", step_variety_enum_1.StepVariety.ArrayBrackets, pointer.level - 1);
+        pointer.createStep("]", StepVariety.ArrayBrackets, pointer.level - 1);
     }
     createObjectParser(value) {
         if (!value)
@@ -94,7 +94,7 @@ class ConsoleStep {
         return "  ".repeat(this.level + 1);
     }
     get steps() {
-        const value = this.isHead ? applyStyle(this.value, step_variety_enum_1.StepVariety.Info) : this.value;
+        const value = this.isHead ? applyStyle(this.value, StepVariety.Info) : this.value;
         return !this.next.length
             ? value
             : value +

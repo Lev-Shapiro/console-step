@@ -10,7 +10,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const _1 = require(".");
-const step_variety_enum_1 = require("./step-variety.enum");
 describe('ConsoleStep', () => {
     it('should create a step with default values', () => {
         const step = new _1.ConsoleStep('test');
@@ -21,7 +20,7 @@ describe('ConsoleStep', () => {
     });
     it('should create a new step with given value and variety', () => {
         const step = new _1.ConsoleStep('test');
-        const newStep = step.createStep('new step', step_variety_enum_1.StepVariety.Success);
+        const newStep = step.createStep('new step', _1.StepVariety.Success);
         expect(newStep).toBeInstanceOf(_1.ConsoleStep);
         expect(newStep['value']).toContain('new step');
         expect(newStep['level']).toBe(1);

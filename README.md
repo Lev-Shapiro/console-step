@@ -1,6 +1,6 @@
-# Console Step Logger
+# Console Step
 
-Console Step Logger is an npm library that enhances your console logs by making them visually appealing. It provides a structured and colorful way to log messages, objects, arrays, and more, with different levels and color varieties.
+Console Step is an npm library that enhances your console logs by making them visually appealing. It provides a structured and colorful way to log messages, objects, arrays, and more, with different levels and color varieties.
 
 ## Table of Contents
 
@@ -20,7 +20,7 @@ Console Step allows you to create step-based logs with nested levels and a varie
 
 ## Installation
 
-To install ConsoleStep, use npm or yarn:
+To install ConsoleStep, use npm:
 
 ```bash
 npm install console_step

@@ -1,5 +1,13 @@
 import { NonPromise, WithConsole } from "./console-step.types";
-import { StepVariety } from "./step-variety.enum";
+export declare enum StepVariety {
+    Default = "",
+    Error = "\u001B[91m",// redBright
+    Success = "\u001B[92m",// greenBright
+    Info = "\u001B[94m",// blueBright
+    Warning = "\u001B[93m",// yellowBright
+    ObjectBrackets = "\u001B[95m",// magentaBright
+    ArrayBrackets = "\u001B[96m"
+}
 export declare class ConsoleStep {
     private value;
     private level;
