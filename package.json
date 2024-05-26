@@ -1,5 +1,5 @@
 {
-  "name": "console_step",
+  "name": "console-step",
   "version": "1.0.7",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -13,21 +13,13 @@
     "step",
     "visual",
     "debug",
-    "debugging",
     "logging",
     "cli",
     "terminal",
-    "formatting",
     "text",
     "style",
-    "styles",
-    "console_step",
-    "console-step",
-    "normalize",
     "beautify",
-    "beautify-log",
     "message",
-    "pretty",
     "format",
     "nested",
     "nest-log",
@@ -36,7 +28,7 @@
   "author": "Lev Shapiro",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Lev-Shapiro/console_step.git"
+    "url": "https://github.com/Lev-Shapiro/console-step.git"
   },
   "license": "ISC",
   "description": "Create visually appealing console.log messages with ease",
