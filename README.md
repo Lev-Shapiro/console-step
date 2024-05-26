@@ -23,7 +23,7 @@ Console Step allows you to create step-based logs with nested levels and a varie
 To install ConsoleStep, use npm:
 
 ```bash
-npm install console-step
+npm install @shapilev/console-step
 ```
 
 ## Features
@@ -37,7 +37,7 @@ npm install console-step
 ## Usage
 
 ```javascript
-import { ConsoleStep, StepVariety } from "console-step";
+import { ConsoleStep, StepVariety } from "@shapilev/console-step";
 
 const fetchToServer = () => false;
 
